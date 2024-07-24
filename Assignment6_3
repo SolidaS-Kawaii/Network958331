@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Using the XMLHttpRequest Object</h2>       
+    <button type="button" onclick="loadXMLDoc()">Request</button>         
+    <div id="demo"></div>  </div>
+<script>
+function loadXMLDoc() {
+    var server = new XMLHttpRequest();
+    server.onreadystatechange = function() {
+        console.log("readyState: "+this.readyState+" status: "+this.status);
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("demo").innerHTML = this.responseText;
+        }
+    };
+    server.open("GET", "server.txt", true);
+    server.send();
+}
+</script>
+</body>
+</html>
